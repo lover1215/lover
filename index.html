@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Message</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap');
+
+        body {
+            background-color: pink;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .message {
+            color: white;
+            text-align: center;
+            font-size: 2em;
+            font-weight: 900;
+            text-shadow: 
+                -1px -1px 0 #000,  
+                1px -1px 0 #000,
+                -1px 1px 0 #000,
+                1px 1px 0 #000,
+                0 0 5px rgba(255, 255, 255, 0.8);
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 1em;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .heart::before {
+            content: '❤️';
+            animation: float 4s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="message">
+        <div>YOU ARE THE ONE</div>
+        <div>I LOVE YOU</div>
+    </div>
+
+    <!-- Generate lots of hearts of different sizes -->
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            const size = Math.random() * 2 + 1;
+            heart.style.fontSize = `${size}em`;
+            heart.style.top = `${Math.random() * 100}vh`;
+            heart.style.left = `${Math.random() * 100}vw`;
+            document.body.appendChild(heart);
+        }
+
+        for (let i = 0; i < 100; i++) {
+            createHeart();
+        }
+    </script>
+</body>
+</html>
